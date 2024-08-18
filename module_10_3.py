@@ -30,12 +30,12 @@ class Bank:
     def take(self):
         while self.j <= self.n:
             #print(f'j={self.j}')
-            if self.lock.locked() and self.i < 100:
+            if self.lock.locked() and self.i < self.n:
                 self.lock.acquire()
                 self.lock.release()
             # Если ввести задержку у потока снятий, то может получиться, что деньги закончатся раньше чем количество снятий.
             # Следующее условие нужно чтобы 2 поток мог разблокировать сам себя и закончить все итерации.
-            elif self.lock.locked() and self.i >= 100:
+            elif self.lock.locked() and self.i >= self.n:
                 self.lock.release()
             self.j += 1
             random_int_1 = random.randint(50, 500)
