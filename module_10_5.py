@@ -28,5 +28,5 @@ if __name__ == '__main__':
         pool.map(read_info, filenames)
     end_1 = datetime.now()
     print(end_1 - start_1)
-
+1
 # 0:00:01.144283
